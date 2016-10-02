@@ -14,6 +14,8 @@ dotenv.load();
 var routes = require('./routes/index');
 var user = require('./routes/user');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
+var callback = require('./routes/callback');
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
@@ -63,7 +65,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/user', user);
 app.use('/login', login);
-
+app.use('/logout', logout);
+app.use('/callback', callback);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

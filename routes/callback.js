@@ -7,11 +7,9 @@ var env = {
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
   AUTH0_CALLBACK_URL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
 };
-/* GET users listing. */
 
-router.get('/login',
-  function(req, res){
-    res.render('login', { env: env });
+router.get('/',
+  passport.authenticate('auth0', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect(req.session.returnTo || '/user');
   });
-
-module.exports = router;
