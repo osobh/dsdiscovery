@@ -9,7 +9,7 @@ var env = {
 };
 /* GET users listing. */
 
-router.get('/login',
+router.get('/',
   function(req, res){
     res.render('login', { env: env });
   });

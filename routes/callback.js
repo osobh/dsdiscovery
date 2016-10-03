@@ -1,6 +1,6 @@
 var express = require('express');
-var passport = require('passport');
 var router = express.Router();
+var passport = require('passport');
 
 var env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
@@ -13,3 +13,4 @@ router.get('/',
   function(req, res) {
     res.redirect(req.session.returnTo || '/user');
   });
+module.exports = router;

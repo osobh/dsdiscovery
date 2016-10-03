@@ -1,7 +1,8 @@
 var express = require('express');
+var router = express.Router();
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
-var router = express.Router();
+
 
 /* GET user profile. */
 router.get('/', ensureLoggedIn, function(req, res, next) {

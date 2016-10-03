@@ -40,11 +40,11 @@ File: Menu
   display: none;
 }
 .navbar-default {
-  background-color: #2196f3;
-  border-radius: 0px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  background-color: #57c5a5;
+  border-radius: 0;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.12), 0 2px 20px 0 rgba(0, 0, 0, 0.08);
   border: none;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .navbar-default .navbar-nav > .open > a {
   background-color: rgba(255, 255, 255, 0.1);
@@ -89,9 +89,6 @@ File: Menu
 }
 .dropdown-menu-lg .media-body p {
   color: #828282;
-}
-.notification-list {
-  max-height: 230px;
 }
 .notification-list em {
   width: 34px;
@@ -184,7 +181,7 @@ body.fixed-left .side-menu.left {
   width: 100%;
 }
 #sidebar-menu .waves-effect .waves-ripple {
-  background-color: rgba(33, 150, 243, 0.45);
+  background-color: rgba(87, 197, 165, 0.45);
 }
 #sidebar-menu .nav > li > a .badge {
   position: absolute;
@@ -237,6 +234,34 @@ body.fixed-left .side-menu.left {
 }
 #sidebar-menu > ul > li > a > span {
   vertical-align: middle;
+}
+#sidebar-menu ul li .menu-arrow {
+  -webkit-transition: -webkit-transform 0.15s;
+  -o-transition: -o-transform 0.15s;
+  transition: transform .15s;
+  position: absolute;
+  right: 20px;
+  display: inline-block;
+  font-family: 'Material-Design-Iconic-Font';
+  text-rendering: auto;
+  line-height: 26px;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+  color: #9a9da0;
+}
+#sidebar-menu ul li .menu-arrow:before {
+  content: "\f2fb";
+}
+#sidebar-menu ul li a.subdrop .menu-arrow {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 #sidebar-menu ul li a i {
   display: inline-block;
@@ -300,8 +325,9 @@ body.fixed-left .side-menu.left {
 .side-menu-sm + .content-page {
   margin-left: 180px;
 }
-#wrapper.enlarged .menu-title {
-  display: none;
+#wrapper.enlarged .menu-title,
+#wrapper.enlarged .menu-arrow {
+  display: none !important;
 }
 #wrapper.enlarged #sidebar-menu ul ul {
   margin-top: -5px;
@@ -367,7 +393,7 @@ body.fixed-left .side-menu.left {
   z-index: 6;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li:hover > ul a:hover {
-  color: #2196f3;
+  color: #57c5a5;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li:hover a span {
   display: inline;
@@ -391,10 +417,10 @@ body.fixed-left .side-menu.left {
   transform: rotate(270deg);
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul ul li.active a {
-  color: #2196f3;
+  color: #57c5a5;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul ul a:hover {
-  color: #2196f3 !important;
+  color: #57c5a5 !important;
 }
 #wrapper.enlarged .left.side-menu #sidebar-menu ul > li > a span {
   display: none;
@@ -592,21 +618,34 @@ body.fixed-left .side-menu.left {
   position: absolute;
   top: 5px;
   right: 20px;
-  color: #c4c4cd;
+  color: #ebeff2;
 }
 .app-search .form-control,
 .app-search .form-control:focus {
   border: none;
   font-size: 13px;
-  color: #435966;
+  color: #ffffff;
   padding-left: 20px;
   padding-right: 40px;
-  background: #ebeff2;
+  background-color: rgba(235, 239, 242, 0.25) !important;
   box-shadow: none;
   border-radius: 30px;
   height: 30px;
   font-weight: 600;
   width: 180px;
+}
+.app-search input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: normal;
+}
+.app-search input:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.app-search input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.app-search input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 /* Right sidebar */
 .side-bar.right-bar {
@@ -651,7 +690,7 @@ body.fixed-left .side-menu.left {
 }
 .notification-list .list-group-item {
   border-bottom: 1px solid rgba(154, 157, 160, 0.2) !important;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .notification-list .list-group-item.active {
   background-color: rgba(154, 157, 160, 0.1);
@@ -673,7 +712,7 @@ body.fixed-left .side-menu.left {
   width: 30px;
   border-radius: 50%;
   text-align: center;
-  background-color: rgba(33, 150, 243, 0.8);
+  background-color: rgba(87, 197, 165, 0.8);
 }
 .user-list .user-list-item .icon i {
   color: #ffffff;
@@ -704,4 +743,8 @@ body.fixed-left .side-menu.left {
   font-size: 11px;
   color: #2f3e47;
   font-style: italic;
+}
+/* Body min-height set */
+body.fixed-left-void {
+  min-height: 1000px;
 }
