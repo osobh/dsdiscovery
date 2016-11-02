@@ -1,30 +1,43 @@
 <html>
-  <head>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <title>Data Science Discovery</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://cdn.auth0.com/js/lock/10.3/lock.min.js">
+    <script src="https://cdn.auth0.com/js/lock/10.5/lock.min.js">
     </script>
-  </head>
-  <body onload="signin()">
-  	  <div id="root" style="width: 280px; margin: 40px auto; padding: 10px;"></div>
-  	 
-  <script>
-  	  var lock = new Auth0Lock( 
-        '{{ env.AUTH0_CLIENT_ID}}', 
-  	  	'{{ env.AUTH0_DOMAIN }}', 
-  	  	{ auth: {
-          redirectUrl: '{{ env.AUTH0_CALLBACK_URL}}', 
-          responseType: 'code', 
-          params: {
-          scope: 'openid name email picture'
-        }}}
-    );
-    
-    function signin() {
-      lock.show();
-    }
-  </script>
-  	  <!-- <button onclick="signin()">Login</button> -->
-  
-  </body>
+</head>
+
+<body onload="signin()">
+    <div id="root" style="width: 320px; margin: 40px auto; padding: 10px; border-width: 0px; box-sizing: border-box;"></div>
+
+    <script>
+        var lock = new Auth0Lock(
+            '{{ env.AUTH0_CLIENT_ID}}',
+            '{{ env.AUTH0_DOMAIN }}', {
+                auth: {
+                    redirectUrl: '{{ env.AUTH0_CALLBACK_URL}}',
+                    responseType: 'code',
+                    params: {
+                        scope: 'openid name email picture'
+                    }
+                },
+                theme: {
+                    logo: '/images/datalogo2.png',
+                    primaryColor: 'green'
+                },
+                languageDictionary: {
+                    title: "DataScienceDiscovery"
+                }
+            }
+        );
+
+        function signin() {
+            lock.show();
+        }
+    </script>
+    <!-- <button onclick="signin()">Login</button> -->
+
+</body>
+
 </html>

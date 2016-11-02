@@ -65,7 +65,7 @@
 
                                 <li class="dropdown user-box">
                                     <a href="" class="dropdown-toggle waves-effect waves-light profile " data-toggle="dropdown" aria-expanded="true">
-                                        <img src="images/users/avatar-1.jpg" alt="user-img" class="img-circle user-img">
+                                        <img src="{{user.picture}}" alt="user-img" class="img-circle user-img">
                                         <div class="user-status away"><i class="zmdi zmdi-dot-circle"></i></div>
                                     </a>
 
@@ -94,15 +94,15 @@
                         	<li class="text-muted menu-title">Navigation</li>
 
                             <li class="has_sub">
-                                <a href="/user#" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                                <a href="/user#" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard</span> </a>
                             </li>
                               <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i> <span> Notebooks </span> <span class="menu-arrow"></span> </a>
                                 <ul class="list-unstyled">
-                                    <li><a href="ui-buttons.html">Data Science</a></li>
-                                    <li><a href="ui-cards.html">Spark</a></li>
-                                    <li><a href="ui-typography.html">Tensor Flow</a></li>
-                                    <li><a href="ui-checkbox-radio.html">Zeppelin</a></li>
+                                    <li><a href="/user/datascience">Data Science</a></li>
+                                    <li><a href="/user/spark">Spark</a></li>
+                                    <li><a href="/user/tensorflow">Tensor Flow</a></li>
+                                    <li><a href="/user/zepp">Zeppelin</a></li>
                                 </ul>
                             </li>
 
@@ -126,7 +126,7 @@
 						<!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="page-title">Dashboard</h4>
+                                <h4 class="page-title">Welcome {{user.nickname}} </h4>
                             </div>
                         </div>
 
@@ -398,7 +398,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer">
-                    2016 © Flacto. Design by <a href="http://coderthemes.com/" target="_blank" class="text-muted">Coderthemes</a>
+                    2016 © DsDiscovery.
                 </footer>
 
             </div>
