@@ -4,7 +4,7 @@ var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var Docker = require('dockerode');
 var docker = new Docker({socketPath: '/var/run/docker.sock'});
-var docker2 = new Docker({host: 'http://dsp01.dyndns.org/docker'});
+
 /* GET user profile. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('user', { user: req.user});
