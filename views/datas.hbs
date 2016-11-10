@@ -209,8 +209,9 @@
                     type: "GET",
                     url: '/docker',
                     success: function(data) {
-												var port = data;
-												var notebookLink = (`<br><div><a href="http://localhost:${port}" target=_blank><button id="button03" type="button" class="btn btn-success">Open Notebook</button></a></div`);
+												var hostURL = data.hostURL;
+												var port = data.notebookPort;
+												var notebookLink = (`<br><div><a href="${hostURL}:${port}" target=_blank><button id="button03" type="button" class="btn btn-success">Open Notebook</button></a></div`);
 												$('#dsLaunchResults').append(notebookLink);
                     },
                     error: function() {
