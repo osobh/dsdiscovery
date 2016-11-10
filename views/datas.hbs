@@ -59,7 +59,7 @@
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li>
                                     <!-- Notification -->
-                                   
+
                                     <!-- End Notification bar -->
                                 </li>
 
@@ -134,21 +134,21 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="card-box">
-                                    
+
                                     <h4 class="header-title m-t-0">{{title}} Notebooks</h4>
                                     <button id="button01" type="button" class="btn btn-primary">Current Notebook Info</button>
                                     <div id="dsResults"></div>
-                                        
+
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="card-box">
-                                    
+
                                     <h4 class="header-title m-t-0">{{title}} Notebooks</h4>
                                     <button id="button02" type="button" class="btn btn-primary">Launch Notebook</button>
-                                    
+
                                     <div id="dsLaunchResults"></div>
-                                        
+
                                 </div>
                             </div><!-- end col -->
 
@@ -176,7 +176,7 @@
 
 
             <!-- Right Sidebar -->
-            
+
 
             <!-- /Right-bar -->
 
@@ -203,66 +203,21 @@
         <script src="../javascripts/jquery.core.js"></script>
         <script src="../javascripts/jquery.app.js"></script>
         <script>
-            var cID;
-            var cNames;
-            var cState;
-            var cStatus;
-        
-            $("#button01").click(function() {
+              $("#button02").click(function() {
                 event.preventDefault();
                 $.ajax({
                     type: "GET",
-                    dataType: 'json',
-                    contentType: 'application/json',
-                    url: 'https://dsp01.dyndns.org/docker/json',
+                    url: '/docker',
                     success: function(data) {
-                        // do stuff with json (in this case an array)
-                        var containers = data;
-                        cID = containers[0].Id;
-                        cNames = containers[0].Names[0];
-                        cState = containers[0].State;
-                        cStatus = containers[0].Status;
-                        console.log(containers);
-                        console.log(cNames);
-                        console.log(cState + " and " + cStatus);
-                        // for(var i=0 ; i < containers.length ; i++){
-                        // 	cNames = containers[i].Names;
-                        // 	cID = containers[i].Id;
-                        $('#dsResults').append('<div class="name">' + cNames + "  " + cState + " and " + cStatus + '</>');
-                        // // 	$('#jobsResults').html(cNames);
-                        // 	console.log(cNames);
-                        // }
-        
-                        // $('#jobsResults').html(cNames);
-        
-        
-        
-                        // console.log(JSON.stringify(data) + "Success, Requesting all Jobs");
+												var port = data;
+												var notebookLink = (`<br><div><a href="http://localhost:${port}" target=_blank><button id="button03" type="button" class="btn btn-success">Open Notebook</button></a></div`);
+												$('#dsLaunchResults').append(notebookLink);
                     },
                     error: function() {
                         $('#resultsRun').append('<div class="name">' + "ERROR!!!!" + '</>');
                     }
                 });
             });
-            
-            $("#button02").click(function() {
-            event.preventDefault();
-            console.log(cID);
-            $.ajax({
-                type: "POST",
-                url: 'https://dsp01.dyndns.org/docker/create',
-                dataType: 'json',
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(),
-                success: function(data) {
-                    // do stuff with json (in this case an array)
-                    console.log(data + "Success, JSON sent");
-                },
-                error: function(data) {
-                    $('#resultsStop').append('<div class="name">'+"ERROR!!!!"+'</>');
-                }
-            });
-            });
-        </script>
+				</script>
 	</body>
 </html>
