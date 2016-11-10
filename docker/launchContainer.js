@@ -5,6 +5,7 @@ var dockerCLI = require('docker-cli-js');
 var Docker = dockerCLI.Docker;
 var docker = new Docker();
 
+var hostURL = process.env.HOST_URL;
 var hostStorageDir = process.env.USER_STORAGE;
 var userNickname = 'osobh';
 var notebookStorageDir = '/home/jovyan/work';
@@ -16,7 +17,10 @@ var launchContainerCommand = `run -d -v /${hostStorageDir}/${userNickname}:${not
 router.get('/', function(req, res){
   docker.command(launchContainerCommand).then(function (data) {
     console.log('data = ', data);
-    res.send(notebookPort.toString());  // res.send interprets the port number as an HTTP status code so converting to string
+    res.json({
+      notebookPort: notebookPort,
+      hostURL: hostURL
+    });
   });
 });
 
