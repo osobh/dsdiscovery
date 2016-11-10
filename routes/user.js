@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
-var Docker = require('dockerode');
-var docker = new Docker({socketPath: '/var/run/docker.sock'});
+
 
 /* GET user profile. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
