@@ -23,11 +23,22 @@ router.get('/', function(req, res){
     docker.command(inspectContainerCommand).then(function (results) {
       var notebookPort = results.object[0].NetworkSettings.Ports[`${hostPort}/tcp`][0].HostPort;
       res.json({
+        containerId: containerId,
         notebookPort: notebookPort,
         hostURL: hostURL
       });
     });
   });
+});
+
+router.delete('/:containerId/delete', function(req, res) {
+  console.log(req.params.containerId);
+  var containerId = req.params.containerId;
+  var removeContainerCommand = `stop ${containerId} && docker rm ${containerId}`;
+  docker.command(removeContainerCommand).then(function (data) {
+    console.log('data = ', data);
+  });
+  res.send();
 });
 
 module.exports = router;
