@@ -16,7 +16,7 @@ var user = require('./routes/user');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var callback = require('./routes/callback');
-var docker = require('./docker/launchContainer');
+var docker = require('./docker/containers');
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
