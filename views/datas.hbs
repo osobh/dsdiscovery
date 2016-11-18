@@ -132,16 +132,7 @@
 
 
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card-box">
-
-                                    <h4 class="header-title m-t-0">{{title}} Notebooks</h4>
-                                    <button id="button01" type="button" class="btn btn-primary">Current Notebook Info</button>
-                                    <div id="dsResults"></div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
+                              <div class="col-lg-4">
                                 <div class="card-box">
 
                                     <h4 class="header-title m-t-0">{{title}} Notebooks</h4>
@@ -203,22 +194,41 @@
         <script src="../javascripts/jquery.core.js"></script>
         <script src="../javascripts/jquery.app.js"></script>
         <script>
-              $("#button02").click(function() {
+              $("#button02").click(function(event) {
                 event.preventDefault();
                 $.ajax({
                     type: "GET",
                     url: '/docker',
                     success: function(data) {
+												var containerId = data.containerId;
 												var hostURL = data.hostURL;
 												var port = data.notebookPort;
 												var notebookLink = (`<br><div><a href="${hostURL}:${port}" target=_blank><button id="button03" type="button" class="btn btn-success">Open Notebook</button></a></div`);
 												$('#dsLaunchResults').append(notebookLink);
+												var removeContainerBtn = (`<br><div id="remove-container"><button id="remove-container-btn" type="button" class="btn btn-danger">Remove Container</button></div>`);
+												$('#dsLaunchResults').append(removeContainerBtn);
+												$("#remove-container").data("containerId", containerId);
                     },
                     error: function() {
                         $('#resultsRun').append('<div class="name">' + "ERROR!!!!" + '</>');
                     }
                 });
             });
+
+						$("#dsLaunchResults").on("click", "#remove-container", function(event) {
+							event.preventDefault();
+							var containerId = $("#remove-container").data().containerId;
+							$.ajax({
+								type: "DELETE",
+								url: `/docker/${containerId}/delete`,
+								success: function(data) {
+									console.log(data);
+								},
+								error: function() {
+									console.log("error");
+								}
+							});
+						});
 				</script>
 	</body>
 </html>
